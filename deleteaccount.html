@@ -1,1 +1,154 @@
-delete
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Delete Account Request</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 24px;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    p.description {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0066ff;
+      box-shadow: 0 0 0 2px rgba(0,102,255,0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      background: #0066ff;
+      color: #ffffff;
+      transition: opacity 0.2s, transform 0.05s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Delete Account Request</h1>
+    <p class="description">
+      Please fill in the form below to request deletion of your account.
+      Our team will review your request and process it as soon as possible.
+    </p>
+
+    <form id="deleteForm">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address (used in the app) *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="userId">User ID / Registered Phone (optional)</label>
+      <input type="text" id="userId" name="userId" />
+
+      <label for="reason">Reason for deletion (optional)</label>
+      <textarea id="reason" name="reason" placeholder="You can tell us why you want to delete your account..."></textarea>
+
+      <p class="note">
+        By submitting this form, you request permanent deletion of your account and associated data, subject to any legal or regulatory data retention requirements.
+      </p>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+
+  <script>
+    // Basic front-end only: show alert when submitted.
+    // In production, send this data to your backend (API / email service) here.
+    document.getElementById("deleteForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Example: gather form data (for future backend integration)
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        userId: document.getElementById("userId").value,
+        reason: document.getElementById("reason").value,
+      };
+
+      console.log("Delete account request:", formData);
+      alert("Thank you. Your delete account request has been submitted. Our team will review it shortly.");
+
+      // Optionally clear the form
+      this.reset();
+    });
+  </script>
+</body>
+</html>
